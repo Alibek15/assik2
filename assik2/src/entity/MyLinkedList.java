@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class MyLinkedList implements List {
+
+
     @Override
     public int size() {
         return 0;

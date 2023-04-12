@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class MyArrayList implements List {
+
+    private Object[] listElements;
+    private int size;
     @Override
     public int size() {
         return 0;
@@ -33,6 +36,7 @@ public class MyArrayList implements List {
 
     @Override
     public boolean add(final Object o) {
+
         return false;
     }
 
