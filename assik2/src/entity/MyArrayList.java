@@ -33,9 +33,10 @@ public class MyArrayList implements MyList {
     }
 
     @Override
-    public void get(final int index) {
-
+    public Object get(final int index) {
+        return listElements[index];
     }
+
 
     @Override
     public void remove(final int index) {
