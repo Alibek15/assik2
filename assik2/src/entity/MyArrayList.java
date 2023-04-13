@@ -12,6 +12,11 @@ public class MyArrayList implements MyList {
     private Object[] listElements;
     private int size;
 
+    public MyArrayList(final Object[] listElements, final int size) {
+        this.listElements = listElements;
+        this.size = size;
+    }
+
     @Override
     public void add(final Object element) {
 
