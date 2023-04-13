@@ -12,14 +12,23 @@ public class MyArrayList implements MyList {
     private Object[] listElements;
     private int size;
 
-    public MyArrayList(final Object[] listElements, final int size) {
-        this.listElements = listElements;
+    public MyArrayList(final int size) {
         this.size = size;
+        listElements = new Object[size];
+
     }
 
     @Override
     public void add(final Object element) {
-
+        int currentLength = listElements.length;
+        if(size == currentLength){
+            int newSize = currentLength*2;
+            Object[] array = new Object[newSize];
+            for (int i = 0; i < currentLength; i++) {
+                array[i] = listElements[i];
+            }
+            listElements=array;
+        }
     }
 
     @Override
