@@ -29,6 +29,7 @@ public class MyArrayList implements MyList {
             }
             listElements=array;
         }
+        listElements[size+1] = element;
     }
 
     @Override
