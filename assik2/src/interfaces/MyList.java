@@ -6,6 +6,6 @@ public interface MyList<T> extends Iterable<T> {
 
     void remove(int index);
 
-
+    int size();
 
 }
