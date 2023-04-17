@@ -2,7 +2,9 @@
 Code written by Java SE.
 Documentation on RUS/ENG.
 Methods used in the interface MyList are implemented in MyArrayList and MyLinkedList:
-   int size(); //get the quantity of elements inside list
+===========================================================================================
+
+    int size() //get the quantity of elements inside list
     boolean contains(Object o); // check if list contains the exact element
     void add(T element); //add element to the last position
     void add(T element, int index); // add element to the exactly index position
@@ -14,6 +16,7 @@ Methods used in the interface MyList are implemented in MyArrayList and MyLinked
     void sort(); // sort by the ascending order all element in the list
     int lastIndexOf(Object o); // returns last index of the element in the list
     ===========================================================================
+    
     int size(); //получение количества элементов внутри списка
     boolean contains(Object o); // проверка на элемент внутри списка
     void add(T element); //добавление элемента в конец 
