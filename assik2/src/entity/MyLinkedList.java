@@ -1,125 +1,102 @@
 package entity;
 
+import interfaces.MyList;
+import org.w3c.dom.Node;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MyLinkedList implements List {
+public class MyLinkedList<T> implements MyList<T> {
 
+    private class MyNode {
+        private final T data;
+        private MyNode next;
+        private MyNode prev;
 
-    @Override
-    public int size() {
-        return 0;
+        public MyNode(T data) {
+            this.data = data;
+        }
     }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
+    private MyNode head;
+    private MyNode tail;
+    private int size;
+
+
+    public void add(T item){
+        MyNode newNode = new MyNode(item);
+        size++;
+        if(head == null){
+            head = tail = newNode;
+        }
+        else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
     }
 
-    @Override
-    public boolean contains(final Object o) {
-        return false;
+    public T get(int index) {
+        if (index < size / 2) {
+            MyNode current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.data;
+        }
+        MyNode current = tail;
+        for (int i = size - 1; i > index; i--) {
+            current = current.prev;
+        }
+        return current.data;
     }
 
-    @Override
-    public Iterator iterator() {
-        return null;
+    public int size(){
+        return size;
     }
 
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
+   public void remove(int index){
+
+       for (int i = 0; i < index; i++) {
+           head = head.next;
+       }
+
+       if (head == head) {
+           head = head.next;
+       } else {
+           head.prev.next = head.next;
+       }
+
+       if (head == tail) {
+           tail = head.prev;
+       } else {
+           head.next.prev = head.prev;
+       }
+
+       size--;
+
+   }
+
+    public Iterator<T> iterator() {
+        return new MyIterator();
     }
 
-    @Override
-    public boolean add(final Object o) {
-        return false;
-    }
+    private class MyIterator implements Iterator<T>{
+        MyNode cursor = head;
 
-    @Override
-    public boolean remove(final Object o) {
-        return false;
-    }
+        @Override
+        public boolean hasNext() {
+            return cursor != null;
+        }
 
-    @Override
-    public boolean addAll(final Collection c) {
-        return false;
-    }
+        @Override
+        public T next(){
+            T data = cursor.data;
+            cursor = cursor.next;
+            return data;
+        }
 
-    @Override
-    public boolean addAll(final int index, final Collection c) {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public Object get(final int index) {
-        return null;
-    }
-
-    @Override
-    public Object set(final int index, final Object element) {
-        return null;
-    }
-
-    @Override
-    public void add(final int index, final Object element) {
-
-    }
-
-    @Override
-    public Object remove(final int index) {
-        return null;
-    }
-
-    @Override
-    public int indexOf(final Object o) {
-        return 0;
-    }
-
-    @Override
-    public int lastIndexOf(final Object o) {
-        return 0;
-    }
-
-    @Override
-    public ListIterator listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator listIterator(final int index) {
-        return null;
-    }
-
-    @Override
-    public List subList(final int fromIndex, final int toIndex) {
-        return null;
-    }
-
-    @Override
-    public boolean retainAll(final Collection c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(final Collection c) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(final Collection c) {
-        return false;
-    }
-
-    @Override
-    public Object[] toArray(final Object[] a) {
-        return new Object[0];
     }
 }

@@ -11,14 +11,14 @@ public class MyArrayList<T> implements MyList<T> {
     private int size;
 
 
-    public MyArrayList(final int size) {
+    public MyArrayList(final int size) { //констурктор по умолчанию
         this.size = size;
         listElements = new Object[size];
 
     }
 
     @Override
-    public void add(final Object element) {
+    public void add(final Object element) { //добавление элемента в конец списка
         int currentLength = listElements.length;
         if(size == currentLength){
             int newSize = currentLength*2;
@@ -32,7 +32,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public void add(final Object element, final int index) {
+    public void add(final Object element, final int index) { //добавление элемента в заданную позицию
         int currentLength = listElements.length;
         if(size == currentLength){
             int newSize = currentLength*2;
@@ -46,13 +46,13 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public T get(final int index) {
+    public T get(final int index) { //получаение элемента по индексу
         return (T) listElements[index];
     }
 
 
     @Override
-    public T remove(final int index) {
+    public T remove(final int index) { //удаление элемента по индексу со сдвигом влево
         int currentLength = listElements.length;
         for (int i = index; i <size-1; i++) {
            listElements[i]=listElements[i+1];
@@ -63,7 +63,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public boolean remove(final Object item) {
+    public boolean remove(final Object item) { //проверка на удаление элемента
         int currentLength = listElements.length;
         for (int i = 0; i < currentLength; i++) {
             if(item!=listElements[i]){
@@ -74,7 +74,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public void clear() {
+    public void clear() { // очистка всего
         int currentLength = listElements.length;
         for (int i = 0; i <currentLength ; i++) {
             listElements[i] = null;
@@ -83,7 +83,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public int indexOf(final Object o) {
+    public int indexOf(final Object o) { // посмотреть по какому индексу стоит элемент
         int currentLength = listElements.length;
         for (int i = 0; i <currentLength ; i++) {
             if(o.equals(listElements[i])){
@@ -94,24 +94,24 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public void sort() {
+    public void sort() { // упорядочивает элементы
         Arrays.sort(listElements);
     }
 
     @Override
-    public int lastIndexOf(final Object o) {
+    public int lastIndexOf(final Object o) { // получает последний индекс
 
 
-        return indexOf(o);
+        return (int)get(size-1);
     }
 
     @Override
-    public int size() {
+    public int size() { //показывает количество элементов внутри списка
         return size;
     }
 
     @Override
-    public boolean contains(final Object o) {
+    public boolean contains(final Object o) { //проверка на содержания внутри элемента
         int currentLength = listElements.length;
         for (int i = 0; i <currentLength ; i++) {
             if(o.equals(listElements[i])){
@@ -122,7 +122,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<T> iterator() { //интерфейс для итерации
         return new MyIterator();
     }
 
